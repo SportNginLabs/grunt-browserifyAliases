@@ -1,0 +1,29 @@
+{
+  "name": "grunt-browserifyAliases",
+  "description": "sets up the browserify grunt config dynamically",
+  "version": "0.0.1",
+  "homepage": "https://github.com/SportNginLabs/grunt-browserifyAliases",
+  "contributors": [
+    {
+      "name": "Kevin Marx",
+      "email": "kevin.marx@sportngin.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SportNginLabs/grunt-browserifyAliases.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SportNginLabs/grunt-browserifyAliases/issues"
+  },
+  "licenses": "private",
+  "main": "grunt.js",
+  "engines": {
+    "node": ">= 0.8.x"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
