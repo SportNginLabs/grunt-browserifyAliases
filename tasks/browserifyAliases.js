@@ -9,36 +9,37 @@
 'use strict'
 
 var fs = require('fs')
+var _ = require('underscore')
 
 module.exports = function(grunt) {
 
+  function isValidDir(child) {
+    return !~child.indexOf('.')
+  }
+
   grunt.registerMultiTask('browserifyAliases', 'sets up the browserify grunt config dynamically', function() {
-
     // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      var dirs = fs.readdirSync(f.src)
-      for (var i = dirs.length; i; i--) {
-        if (dirs[i] && dirs[i].match(/\./g)) dirs.splice(i, 1)
-      }
+    _.each(this.data, function(f) {
+      var mappings = fs.readdirSync(f.src)
+        .filter(isValidDir)
+        .map(function(dir) {
+          dir = f.dest || dir
+          var cwd = f.src + '/' + dir
+          grunt.log.writeln('Mapping ' + cwd.cyan + ' to ' + dir.cyan)
+          return {
+            cwd: cwd,
+            src: f.pattern || ['**/*.js'],
+            dest: dir
+          }
+        })
 
-      var mappings = dirs.map(function(dir) {
-        var cwd = f.src + '/' + dir
-        grunt.verbose.writeln('Mapping ' + cwd.cyan + ' to ' + dir.cyan)
-        return {
-          cwd: cwd,
-          src: ['**/*.js'],
-          dest: dir
-        }
-      })
-
-      var envs = f.dest.split(',')
-      for (var i = 0; i < envs.length; i++) {
-        var key = 'browserify.'+envs[i]+'.options.aliasMappings'
+      for (var a = 0; a < f.env.length; a++) {
+        var key = 'browserify.'+f.env[a]+'.options.aliasMappings'
         var cur = grunt.config(key) || []
         grunt.config(key, cur.concat(mappings))
       }
-
     })
+
   })
 
 }

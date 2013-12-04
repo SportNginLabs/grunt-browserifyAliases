@@ -24,6 +24,8 @@
   "scripts": {
     "test": "grunt test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "underscore" : "1.5.2"
+  },
   "devDependencies": {}
 }
