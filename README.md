@@ -1,6 +1,6 @@
 # grunt-browserifyAliases
 
-> Dynamically alias your directories for browserify
+Dynamically alias files or directories for Browserify.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.2` and Underscore `1.5.2`
@@ -23,12 +23,22 @@ grunt.loadNpmTasks('grunt-browserifyAliases');
 In your project's Gruntfile, add a section named `browserifyAliases` to the data object passed into `grunt.initConfig()`.
 
 ```js
+/*
+ * browserifyAliases
+ * 
+ * src     - The target driectory to iterate over
+ * dest    - the name of the alias
+ * pattern - the globbing pattern
+ * env     - The envs you want to target in your browserify config
+ * 
+ */
+
 grunt.initConfig({
   browserifyAliases: {
     directories: [{
       src: 'app/assets/js',
       env: ['prod', 'dev', 'test']
-    }, { // if you are using the snui node module add this section
+    }, {
       src: 'node_modules/snui',
       dest: 'snui',
       pattern: ['**/*.js', '!**browserify**'],
@@ -37,6 +47,3 @@ grunt.initConfig({
   },
 });
 ```
-
-## Release History
-_(Nothing yet)_
