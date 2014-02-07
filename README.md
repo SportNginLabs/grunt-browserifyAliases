@@ -25,12 +25,12 @@ In your project's Gruntfile, add a section named `browserifyAliases` to the data
 ```js
 /*
  * browserifyAliases
- * 
+ *
  * src     - The target driectory to iterate over
  * dest    - the name of the alias
  * pattern - the globbing pattern
  * env     - The envs you want to target in your browserify config
- * 
+ *
  */
 
 grunt.initConfig({
@@ -47,3 +47,9 @@ grunt.initConfig({
   },
 });
 ```
+
+
+# Deploy to Gemfury
+
+1. `npm pack`
+2. `curl -F package=@grunt-browserifyAliases-#.#.#.tgz https://push.fury.io/Up97EjxiNexkaesDEnU1`
