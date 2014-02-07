@@ -52,4 +52,4 @@ grunt.initConfig({
 # Deploy to Gemfury
 
 1. `npm pack`
-2. `curl -F package=@snjs-#.#.#.tgz https://push.fury.io/Up97EjxiNexkaesDEnU1`
+2. `curl -F package=@grunt-browserifyAliases-#.#.#.tgz https://push.fury.io/Up97EjxiNexkaesDEnU1`
