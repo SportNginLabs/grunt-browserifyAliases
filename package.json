@@ -1,7 +1,7 @@
 {
   "name": "grunt-browserifyAliases",
   "description": "sets up the browserify grunt config dynamically",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/SportNginLabs/grunt-browserifyAliases",
   "contributors": [
     {
