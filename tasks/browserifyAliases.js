@@ -24,8 +24,11 @@ module.exports = function(grunt) {
         .filter(isValidDir)
         .map(function(dir) {
           dir = f.dest || dir
-          var cwd = f.src + '/' + dir
+          var cwd = f.src
+          if (!f.dest) cwd += '/' + dir
+
           grunt.log.writeln('Mapping ' + cwd.cyan + ' to ' + dir.cyan)
+
           return {
             cwd: cwd,
             src: f.pattern || ['**/*.js'],
